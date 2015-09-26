@@ -36,7 +36,7 @@ public class CalcIBU{
 
             Utilisacia_hmelia = (1.65 * Math.pow(0.000125,Plotnost_susla - 1)) * ((1 - Math.exp(-0.04 * Vremia_varki)) / 4.15);
 
-            //Коррекция значения утилизации для типа хмеля (W - шишковой, P - гранулированный)
+            //Коррекция значения утилизации для типа хмеля (Wh - шишковой, Ph - гранулированный)
             if (Tip_hvelia.equals(Ph)){
                 Utilisacia_hmelia = Utilisacia_hmelia * 1.1;
             }
