@@ -11,17 +11,17 @@ public class BeerCalc {
 
     String[][] solod = new String[5][4];    //Массив добавленных солодов
     String[][] hmel = new String[0][6];     //Массив добавленных хмелей
-    float start_plotnost = 1.055f;          //Начальная плотность сусла до брожения по умолцанию = 1.055 SG
-    float finish_plotnost = 1.005f;         //Плотность сусла после брожения по умолчанию = 1.005 SG
+    double start_plotnost = 1.055;          //Начальная плотность сусла до брожения по умолцанию = 1.055 SG
+    double finish_plotnost = 1.005;         //Плотность сусла после брожения по умолчанию = 1.005 SG
 
 
 
     //Рассчитываемые параметры полученного пива
 
-    double IBU = 0.00d;                     //IBU готового напитка
-    float obiom = 0.00f;                    //Объём готового напитка (он же объём сусла до и после брожения)
+    double IBU = 0.00;                     //IBU готового напитка
+    double obiom = 0.00;                    //Объём готового напитка (он же объём сусла до и после брожения)
     String color = new String();            //Цвет готового напитка
-    float Alkch  = 0.00f;                   //Процентное содержание алкоголя в готовом напитке
+    double Alkch  = 0.00;                   //Процентное содержание алкоголя в готовом напитке
 
 
 
@@ -30,7 +30,7 @@ public class BeerCalc {
     static int SolodNumber = 0;             //Счётчик строк в массиве солода
     static int HmelNumber = 0;              //Счётчик строк в массиве хмель
     static double Utilisacia_hmelia;        //Уварка хмеля
-    static float hmel_type = 1f;            //Коэффициент уварки хмеля. Для шишек = 1; для капсул = 1.1
+    static double hmel_type = 1;            //Коэффициент уварки хмеля. Для шишек = 1; для капсул = 1.1
 
 
 
@@ -108,7 +108,7 @@ public class BeerCalc {
 
     //Добавление параметров сусла до и после брожения в рецепт рассчитываемого напитка
 
-    public boolean addElement(float Obiom, float Plotnost_before, float Plotnost_after){
+    public boolean addElement(double Obiom, double Plotnost_before, double Plotnost_after){
 
         this.obiom = Obiom;
         this.start_plotnost = Plotnost_before;
@@ -133,12 +133,12 @@ public class BeerCalc {
 
         //Обнуление переменных, учавструющих в расчётах и результатов
 
-        this.start_plotnost = 1.055f;
-        this.finish_plotnost = 1.005f;
+        this.start_plotnost = 1.055;
+        this.finish_plotnost = 1.005;
         this.IBU = 0d;
-        this.obiom = 0.00f;
+        this.obiom = 0.00;
         this.color = "";
-        this.Alkch  = 0.00f;
+        this.Alkch  = 0.00;
 
     }
 
@@ -152,7 +152,7 @@ public class BeerCalc {
 
         //Расчёт суммарного значения IBU для всех закладок хмеля
 
-        for (int i = 0; i <= hmel.length; i++){
+        for (int i = 0; i < hmel.length; i++){
 
             this.IBU = mathsIBU(i);
         }
@@ -195,8 +195,8 @@ public class BeerCalc {
 
         //Определение IBU
 
-        tempIBU = this.Utilisacia_hmelia * (((Float.valueOf(this.hmel[NumberRow][4]) / 100) *
-                (Float.valueOf(this.hmel[NumberRow][3]) * 0.0352739619) * 7490) / (this.obiom * 0.264172052));
+        tempIBU = this.Utilisacia_hmelia * (((Double.valueOf(this.hmel[NumberRow][4]) / 100) *
+                (Double.valueOf(this.hmel[NumberRow][3]) * 0.0352739619) * 7490) / (this.obiom * 0.264172052));
 
         return roundRes(tempIBU, 100);
     }

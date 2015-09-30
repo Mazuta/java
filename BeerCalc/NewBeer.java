@@ -6,12 +6,15 @@ public class NewBeer{
 
     public static void main (String[] args){
 
-        Calc.addElement("Company1", "Name1", "Type1", "Massa1", "Alpha1" ,"TimeV1");
+        Calc.addElement("Company1", "Name1", "Pellet", "10", "14.9" ,"90");
+        Calc.addElement("Company1", "Name1", "Pellet", "20", "14.9" ,"60");
+        Calc.addElement(20, 1.055, 1.005);
 
-        System.out.println(Calc.hmel[0][0]+Calc.hmel[0][1]+Calc.hmel[0][2]+Calc.hmel[0][3]+Calc.hmel[0][4]+Calc.hmel[0][5]);
+        Calc.mathsBeer();
 
-        Calc.addElement("Company2", "Name2", "Type2", "Massa2", "Alpha2" ,"TimeV2");
+        System.out.println(Calc.IBU);
 
-        System.out.println(Calc.hmel[1][0]+Calc.hmel[1][1]+Calc.hmel[1][2]+Calc.hmel[1][3]+Calc.hmel[1][4]+Calc.hmel[1][5]);
+
+
     }
 }
