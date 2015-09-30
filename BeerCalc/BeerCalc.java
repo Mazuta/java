@@ -9,7 +9,7 @@ public class BeerCalc {
 
     //Объявление переменных
 
-    String[][] solod = new String[5][4];    //Массив добавленных солодов
+    String[][] solod = new String[0][4];    //Массив добавленных солодов
     String[][] hmel = new String[0][6];     //Массив добавленных хмелей
     double start_plotnost = 1.055;          //Начальная плотность сусла до брожения по умолцанию = 1.055 SG
     double finish_plotnost = 1.005;         //Плотность сусла после брожения по умолчанию = 1.005 SG
@@ -18,7 +18,7 @@ public class BeerCalc {
 
     //Рассчитываемые параметры полученного пива
 
-    double IBU = 0.00;                     //IBU готового напитка
+    double IBU = 0.00;                      //IBU готового напитка
     double obiom = 0.00;                    //Объём готового напитка (он же объём сусла до и после брожения)
     String color = new String();            //Цвет готового напитка
     double Alkch  = 0.00;                   //Процентное содержание алкоголя в готовом напитке
@@ -36,26 +36,44 @@ public class BeerCalc {
 
     //Добавление элемента (солода) в рецепт рассчитываемого напитка
 
-    public boolean addElement(String Company, String Name, String Massa, String Color){
+    public void addElement(String Company, String Name, String Massa, String Color){
 
 
 
-        // Если пытаемся добавить в массив больше пяти элементов то фенкция возврвщает false
-        if (SolodNumber > 4) {
-            return false;
+        //Создаем временный массив tempArray с количеством строк на 1 больше массива solod
+
+        String[][] tempArray = new String[solod.length+1][4];
+
+
+
+        //Присвоение всех строк массива solod[][] временному массиву tempArray[][]
+
+        for (int i = 0; i < solod.length; i++){
+            for(int k = 0; k <= 3; k++){tempArray[i][k]=solod[i][k];}
         }
 
-        this.solod[SolodNumber][0] = Company;
-        this.solod[SolodNumber][1] = Name;
-        this.solod[SolodNumber][2] = Massa;
-        this.solod[SolodNumber][3] = Color;
-
-        SolodNumber++;
 
 
+        //Добавление в последнюю свободную строку значения из переменных
 
-        // Если функция выполнелась успешно то возвращает true
-        return true;
+        tempArray[tempArray.length-1][0] = Company;
+        tempArray[tempArray.length-1][1] = Name;
+        tempArray[tempArray.length-1][2] = Massa;
+        tempArray[tempArray.length-1][3] = Color;
+
+
+
+        //Переопределениее массива solod[][] сназмарос равным массиву tempArray[][]
+
+        solod = new String[tempArray.length][4];
+
+
+
+        //Присвоение всех строк массива tempArray[][] обратно массиву solod[][]
+
+        for (int i = 0; i < tempArray.length; i++) {
+            for (int k = 0; k <= 3; k++){solod[i][k] = tempArray[i][k];}
+        }
     }
 
 
@@ -125,9 +143,10 @@ public class BeerCalc {
 
 
 
-        //Осистка массива hmel (переопределение с нулевым количеством строк)
+        //Осистка массивов solod и hmel (переопределение с нулевым количеством строк)
 
         this.hmel = new String[0][6];
+        this.solod = new String[0][4];
 
 
 
@@ -156,6 +175,12 @@ public class BeerCalc {
 
             this.IBU = mathsIBU(i);
         }
+
+
+
+        //Определение объёма сусла/пива по умолчанию
+
+        this.obiom = mathsObiom_Default();
 
     }
 
@@ -220,5 +245,26 @@ public class BeerCalc {
         temp = temp / ostatok;
 
         return temp;
+    }
+
+
+
+
+    //Расчитываем примерный объём напитка по умолчанию (из соотношения солод/вода = 1/5)
+
+    private double mathsObiom_Default(){
+
+        double All_mass_solod = 0;
+
+
+
+        //Суммируем массу всех солодов в засыре
+        for (int i = 0; i < this.solod.length; i++){All_mass_solod += Double.valueOf(solod[i][2]);}
+
+
+
+        //Расчёт воды по соотношению 1/5
+
+        return All_mass_solod * 5;
     }
 }

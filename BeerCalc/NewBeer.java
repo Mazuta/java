@@ -4,7 +4,12 @@ public class NewBeer{
 
     static BeerCalc Calc = new BeerCalc();
 
+    static BeerCalc[] C = new BeerCalc[10];
+
     public static void main (String[] args){
+
+        Calc.addElement("Company1", "Name1", "1", "30");
+        Calc.addElement("Company2", "Name2", "1.5", "950");
 
         Calc.addElement("Company1", "Name1", "Pellet", "10", "14.9" ,"90");
         Calc.addElement("Company1", "Name1", "Pellet", "20", "14.9" ,"60");
@@ -12,7 +17,8 @@ public class NewBeer{
 
         Calc.mathsBeer();
 
-        System.out.println(Calc.IBU);
+        System.out.println("ќбъЄм воды по умолчанию: " + Calc.obiom +  " л.");
+        System.out.println("IBU: " + Calc.IBU);
 
 
 
