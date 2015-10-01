@@ -182,6 +182,11 @@ public class BeerCalc {
 
         this.obiom = mathsObiom_Default();
 
+
+
+
+        //Определеие алкогольности расчитываемого пива
+        this.Alkch = mathsAlkch();
     }
 
 
@@ -266,5 +271,15 @@ public class BeerCalc {
         //Расчёт воды по соотношению 1/5
 
         return All_mass_solod * 5;
+    }
+
+
+
+    //Расчёт алкогольности напитка
+
+    private double mathsAlkch(){
+
+        return roundRes(((((this.start_plotnost - 1) / 0.002) - 1) * 0.25) - ((((this.finish_plotnost - 1) / 0.002) - 1) * 0.25),100);
+
     }
 }

@@ -19,6 +19,7 @@ public class NewBeer{
 
         System.out.println("Объём воды по умолчанию: " + Calc.obiom +  " л.");
         System.out.println("IBU: " + Calc.IBU);
+        System.out.println("Содержание алкоголя: " + Calc.Alkch + "%");
 
 
 
