@@ -1,3 +1,5 @@
+package pak;
+
 import java.lang.Double;
 import java.lang.String;
 import java.nio.IntBuffer;
@@ -18,10 +20,10 @@ public class BeerCalc {
 
     //Рассчитываемые параметры полученного пива
 
-    double IBU = 0.00;                      //IBU готового напитка
-    double obiom = 0.00;                    //Объём готового напитка (он же объём сусла до и после брожения)
-    String color = new String();            //Цвет готового напитка
-    double Alkch  = 0.00;                   //Процентное содержание алкоголя в готовом напитке
+    public double IBU = 0.00;                      //IBU готового напитка
+    public double obiom = 0.00;                    //Объём готового напитка (он же объём сусла до и после брожения)
+    public String color = new String();            //Цвет готового напитка
+    public double Alkch  = 0.00;                   //Процентное содержание алкоголя в готовом напитке
 
 
 

@@ -1,10 +1,9 @@
+import  pak.BeerCalc;
 import java.lang.String;
 
 public class NewBeer{
 
     static BeerCalc Calc = new BeerCalc();
-
-    static BeerCalc[] C = new BeerCalc[10];
 
     public static void main (String[] args){
 
@@ -20,6 +19,8 @@ public class NewBeer{
         System.out.println("Объём воды по умолчанию: " + Calc.obiom +  " л.");
         System.out.println("IBU: " + Calc.IBU);
         System.out.println("Содержание алкоголя: " + Calc.Alkch + "%");
+
+
 
 
 
