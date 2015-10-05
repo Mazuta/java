@@ -33,18 +33,19 @@ public class Malt {
 
 
 
-    // ����������� �����������
+    // Конструктор по умолчанию
 
     Malt(){
         this.providerName = null;
         this.productName = null;
         this.weight = 0;
         this.colorEBC = 0;
+
     }
 
 
 
-    // ����������� � ���� ������
+    // Констркутор в одну строку
 
     Malt(String providerName, String productName, double weight, int colorEBC){
 
@@ -52,27 +53,15 @@ public class Malt {
         this.productName = productName;
         this.weight = weight;
         this.colorEBC = colorEBC;
+
     }
 
 
 
-    // ��������� ������
+    // Свойства объектов класса Malt
 
     String providerName, productName;
     double weight;
     int colorEBC;
 
-    public static void main(String[] args){
-
-        Malt solod = new Malt();
-            solod.providerName = "Поставщик";
-            solod.productName = "Марка";
-            solod.weight = 1.5;
-            solod.colorEBC = 3;
-
-        System.out.print(solod.providerName + " ");
-        System.out.print(solod.productName + " ");
-        System.out.print(solod.weight + " ");
-        System.out.println(solod.colorEBC);
-    }
 }
